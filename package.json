@@ -7,7 +7,25 @@
     "postinstall": "node ./decorate-angular-cli.js",
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "svg": "svg-generator"
+  },
+  "svgGenerator": {
+    "outputPath": "./libs/baz/src/lib/svg",
+    "srcPath": "./libs/baz/src/lib/assets",
+    "svgoConfig": {
+      "plugins": [
+        "removeDimensions",
+        "removeTitle",
+        "cleanupAttrs",
+        {
+          "name": "inlineStyles",
+          "params": {
+            "onlyMatchedOnce": false
+          }
+        }
+      ]
+    }
   },
   "private": true,
   "dependencies": {
@@ -19,6 +37,7 @@
     "@angular/platform-browser": "~15.0.0",
     "@angular/platform-browser-dynamic": "~15.0.0",
     "@angular/router": "~15.0.0",
+    "@ngneat/svg-icon": "^5.0.0",
     "@nrwl/angular": "15.2.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
@@ -32,6 +51,7 @@
     "@angular/cli": "~15.0.0",
     "@angular/compiler-cli": "~15.0.0",
     "@angular/language-service": "~15.0.0",
+    "@ngneat/svg-generator": "^5.0.0",
     "@nrwl/cli": "15.2.0",
     "@nrwl/cypress": "15.2.0",
     "@nrwl/eslint-plugin-nx": "15.2.0",
